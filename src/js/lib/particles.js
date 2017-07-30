@@ -1412,7 +1412,19 @@ var pJS = function(tag_id, params){
 };
 
 /* ---------- global functions - vendors ------------ */
-
+Object.deepExtend = function deepExtendFunction(destination, source) {
+        for (var property in source) {
+            if (source[property] && source[property].constructor &&
+                source[property].constructor === Object) {
+                destination[property] = destination[property] || {};
+                deepExtendFunction(destination[property], source[property]);
+            } else {
+                destination[property] = source[property];
+            }
+        }
+        return destination;
+    };
+/*
 Object.deepExtend = function(destination, source) {
   for (var property in source) {
     if (source[property] && source[property].constructor &&
@@ -1425,7 +1437,7 @@ Object.deepExtend = function(destination, source) {
   }
   return destination;
 };
-
+*/
 window.requestAnimFrame = (function(){
   return  window.requestAnimationFrame ||
     window.webkitRequestAnimationFrame ||
