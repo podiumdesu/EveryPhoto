@@ -1,7 +1,28 @@
 webpackJsonp([1],[
-/* 0 */,
+/* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+exports.default = function (element, index) {
+    var targetNode = $("#render-picture");
+    var div = document.createElement("div");
+    div.className += " pic-container ";
+    div.setAttribute("data-id", index);
+    //language=HTML
+    div.innerHTML = "\n        <div class=\"img-containers\">\n            <div class=\"img-container\">\n                <img src= " + element.smallURL + " alt=\"\">\n            </div>\n        </div>\n        <p class=\"pic-path\">" + element.largePATH + "</p>\n    ";
+    targetNode.append(div);
+};
+
+/***/ }),
 /* 1 */,
-/* 2 */
+/* 2 */,
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1405,7 +1426,7 @@ window.particlesJS.load = function (tag_id, path_config_json, callback) {
 };
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1416,15 +1437,15 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.allData = undefined;
 
-var _myGallery = __webpack_require__(6);
+var _myGallery = __webpack_require__(7);
 
-__webpack_require__(4);
-console.log("ddd");
-__webpack_require__(2);
-__webpack_require__(0);
-__webpack_require__(1);
 __webpack_require__(5);
-
+console.log("ddd");
+__webpack_require__(3);
+__webpack_require__(1);
+__webpack_require__(2);
+__webpack_require__(6);
+__webpack_require__(0);
 var allData = exports.allData = void 0;
 
 console.log("This is index.js");
@@ -1474,7 +1495,7 @@ searchBar.bind("keyup", function (event) {
                 if (this.readyState === 4) {
                     //Todo
                     console.log(this.responseText);
-                    exports.allData = allData = JSON.parse(responseText);
+                    exports.allData = allData = JSON.parse(this.responseText);
                     allData.forEach(render);
                 }
             };
@@ -1487,7 +1508,7 @@ searchBar.bind("keyup", function (event) {
 }, false);
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1500,10 +1521,10 @@ searchBar.bind("keyup", function (event) {
 console.log("Hello,world");
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ })
-],[3]);
+],[4]);

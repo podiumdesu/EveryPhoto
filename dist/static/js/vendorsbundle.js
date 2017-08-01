@@ -89,7 +89,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "e78d4e4712af3296243d"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "a244a31d7bcc6ae2a4d1"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -800,23 +800,24 @@
 /******/ })
 /************************************************************************/
 /******/ ([
-/* 0 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
+/* 0 */,
 /* 1 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 2 */,
+/* 2 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
 /* 3 */,
 /* 4 */,
 /* 5 */,
-/* 6 */
+/* 6 */,
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -835,7 +836,7 @@ var _renderLIB = __webpack_require__(10);
 
 var _renderLIB2 = _interopRequireDefault(_renderLIB);
 
-var _clear = __webpack_require__(7);
+var _clear = __webpack_require__(8);
 
 var _clear2 = _interopRequireDefault(_clear);
 
@@ -843,8 +844,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 console.log("This is myGallery.js");
 console.log("dd");
-__webpack_require__(0);
 __webpack_require__(1);
+__webpack_require__(2);
 __webpack_require__(11);
 var searchPath = exports.searchPath = void 0;
 exports.searchPath = searchPath = "";
@@ -974,7 +975,7 @@ $("#btn-cancel").click(function () {
 });
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -991,7 +992,6 @@ exports.default = function (targetNode) {
 };
 
 /***/ }),
-/* 8 */,
 /* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
