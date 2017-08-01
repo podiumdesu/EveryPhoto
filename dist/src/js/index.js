@@ -16,6 +16,9 @@ require('../styles/index/search-bar.css');
 
 var allData = exports.allData = void 0;
 
+console.log("This is index.js");
+console.log(_myGallery.searchPath);
+console.log(JSON.parse(localStorage.getItem("searchPath")));
 exports.allData = allData = [];
 console.log("This is index.js");
 /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
@@ -59,7 +62,7 @@ searchBar.bind("keyup", function (event) {
                 console.log(this.readyState);
                 if (this.readyState === 4) {
                     //Todo
-                    cosnole.log(this.responseText);
+                    console.log(this.responseText);
                     exports.allData = allData = JSON.parse(responseText);
                     allData.forEach(render);
                 }

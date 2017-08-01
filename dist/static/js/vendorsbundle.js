@@ -89,7 +89,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "0efb158564ea57b628a1"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "e78d4e4712af3296243d"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -827,6 +827,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.searchPath = undefined;
 
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 var _libData = __webpack_require__(9);
 
 var _renderLIB = __webpack_require__(10);
@@ -846,9 +848,10 @@ __webpack_require__(1);
 __webpack_require__(11);
 var searchPath = exports.searchPath = void 0;
 exports.searchPath = searchPath = "";
-
 //searchPath = "/Users/petnakanojo/Documents/img";    //这是一个假数据
-
+//localStorage.setItem("searchPathArray","[]");
+var searchPathArray = JSON.parse(localStorage.getItem("searchPathArray"));
+exports.searchPath = searchPath = JSON.parse(localStorage.getItem("searchPath"));
 
 var targetNode = $("#gallery-container");
 var storedLIBData = void 0;
@@ -893,7 +896,45 @@ searchBar.bind("keyup",function(event) {    //监听回车事件
 */
 
 //使用localstorage
-$(".choose-path").live("click", function () {});
+$(".choose-path").live("click", function () {
+    if (JSON.parse(localStorage.getItem("searchPathArray")).indexOf(parseInt($(this).parent(".ga-bar").attr("data-id"))) < 0) {
+        console.log($(this).parent(".ga-bar").attr("data-id"));
+        console.log("ddd" + JSON.parse(localStorage.getItem("searchPathArray")));
+        console.log(JSON.parse(localStorage.getItem("searchPathArray")).indexOf($(this).parent(".ga-bar").attr("data-id")));
+        console.log("kkk");
+        $(this).parent(".ga-bar").attr("chooseornot", "yes");
+        $(this).addClass("choose");
+
+        searchPathArray.push(parseInt($(this).parent(".ga-bar").attr("data-id")));
+        localStorage.setItem("searchPathArray", JSON.stringify(searchPathArray));
+
+        console.log(localStorage.getItem("searchPathArray"));
+        console.log(searchPathArray);
+        console.log($(this).parent().children(".lib-path").html());
+
+        exports.searchPath = searchPath = searchPath.concat(" ", $(this).parent().children(".lib-path").html(), " ");
+        localStorage.setItem("searchPath", JSON.stringify(searchPath));
+
+        console.log("afterAdd" + searchPath);
+    } else {
+        $(this).parent(".ga-bar").attr("chooseornot", "");
+        $(this).removeClass("choose");
+        var index = searchPathArray.indexOf($(this).parent(".ga-bar").attr("data-id"));
+        console.log("searchPathArray" + searchPathArray);
+        searchPathArray.splice(index, 1);
+        var pathlength = $(this).parent().children(".lib-path").html().length;
+        var pathindex = searchPath.indexOf($(this).parent().children(".lib-path").html());
+        console.log(typeof searchPath === "undefined" ? "undefined" : _typeof(searchPath));
+        console.log(searchPath);
+        exports.searchPath = searchPath = searchPath.replace($(this).parent().children(".lib-path").html(), "");
+        console.log("afterReplace" + searchPath);
+        localStorage.setItem("searchPath", JSON.stringify(searchPath));
+
+        localStorage.setItem("searchPathArray", JSON.stringify(searchPathArray));
+        console.log(JSON.parse(localStorage.getItem("searchPathArray")));
+        console.log(searchPathArray);
+    }
+});
 
 $("#btn-addNewInfo").click(function () {
     var newLIB = {};
@@ -980,8 +1021,17 @@ exports.default = function (element, index) {
     var targetNode = $("#gallery-container");
     var div = document.createElement("div");
     div.setAttribute("data-id", index);
-    div.className += 'ga-bar';
-    div.innerHTML = "\n        <div class=\"choose-path\">\n            <p>YES</p>\n        </div>\n        <p class=\"lib-name\">" + element.name + "</p>\n        <p class=\"lib-path\">" + element.path + "</p>\n    ";
+    div.className += ' ga-bar ';
+    div.setAttribute("chooseornot", "");
+
+    var searchPathArray = JSON.parse(localStorage.getItem("searchPathArray"));
+    if (searchPathArray.indexOf(parseInt(index)) >= 0) {
+        console.log("YESSSSSSS!!");
+        div.setAttribute("chooseornot", "yes");
+        div.innerHTML = "\n        <div class=\"choose-path choose\" >\n            <p>YES</p>\n        </div>\n        <p class=\"lib-name\">" + element.name + "</p>\n        <p class=\"lib-path\">" + element.path + "</p>\n    ";
+    } else {
+        div.innerHTML = "\n        <div class=\"choose-path\" >\n            <p>YES</p>\n        </div>\n        <p class=\"lib-name\">" + element.name + "</p>\n        <p class=\"lib-path\">" + element.path + "</p>\n    ";
+    }
     targetNode.prepend(div);
 };
 

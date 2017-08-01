@@ -7,6 +7,9 @@ require ('../styles/index/search-bar.css');
 
 export let allData;
 import {searchPath} from './myGallery';
+console.log("This is index.js");
+console.log(searchPath);
+console.log(JSON.parse(localStorage.getItem("searchPath")));
 allData = [];
 console.log("This is index.js");
 /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
@@ -49,7 +52,7 @@ searchBar.bind("keyup",function(event) {    //监听回车事件
             ajax.onreadystatechange= function() {
                 console.log(this.readyState);
                 if (this.readyState === 4) {   //Todo
-                    cosnole.log(this.responseText);
+                    console.log(this.responseText);
                     allData = JSON.parse(responseText);
                     allData.forEach(render);
                 }

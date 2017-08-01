@@ -8,9 +8,10 @@ import renderLIB from './MG/renderLIB';
 import clear from './clear';
 export let searchPath;
 searchPath = "";
-
 //searchPath = "/Users/petnakanojo/Documents/img";    //这是一个假数据
-
+//localStorage.setItem("searchPathArray","[]");
+let searchPathArray = JSON.parse(localStorage.getItem("searchPathArray"));
+searchPath = JSON.parse(localStorage.getItem("searchPath"));
 
 const targetNode = $("#gallery-container");
 let storedLIBData;
@@ -63,6 +64,44 @@ searchBar.bind("keyup",function(event) {    //监听回车事件
 
 //使用localstorage
 $(".choose-path").live("click",function() {
+    if ((JSON.parse(localStorage.getItem("searchPathArray"))).indexOf(parseInt($(this).parent(".ga-bar").attr("data-id"))) < 0)  {
+        console.log($(this).parent(".ga-bar").attr("data-id"));
+        console.log("ddd"+JSON.parse(localStorage.getItem("searchPathArray")));
+        console.log((JSON.parse(localStorage.getItem("searchPathArray"))).indexOf($(this).parent(".ga-bar").attr("data-id")));
+        console.log("kkk");
+        $(this).parent(".ga-bar").attr("chooseornot","yes");
+        $(this).addClass("choose");
+
+        searchPathArray.push(parseInt($(this).parent(".ga-bar").attr("data-id")));
+        localStorage.setItem("searchPathArray",JSON.stringify(searchPathArray));
+
+        console.log(localStorage.getItem("searchPathArray"));
+        console.log(searchPathArray);
+        console.log($(this).parent().children(".lib-path").html());
+
+        searchPath = searchPath.concat(" ",$(this).parent().children(".lib-path").html()," ");
+        localStorage.setItem("searchPath",JSON.stringify(searchPath));
+
+        console.log("afterAdd" + searchPath);
+    } else {
+        $(this).parent(".ga-bar").attr("chooseornot","");
+        $(this).removeClass("choose");
+        let index = searchPathArray.indexOf($(this).parent(".ga-bar").attr("data-id"));
+        console.log("searchPathArray"+searchPathArray);
+        searchPathArray.splice(index,1);
+        let pathlength = $(this).parent().children(".lib-path").html().length;
+        let pathindex = searchPath.indexOf($(this).parent().children(".lib-path").html());
+        console.log(typeof(searchPath));
+        console.log(searchPath);
+        searchPath = searchPath.replace($(this).parent().children(".lib-path").html(), "");
+        console.log("afterReplace" + searchPath);
+        localStorage.setItem("searchPath",JSON.stringify(searchPath));
+
+
+        localStorage.setItem("searchPathArray",JSON.stringify(searchPathArray));
+        console.log(JSON.parse(localStorage.getItem("searchPathArray")));
+        console.log(searchPathArray);
+    }
 
 });
 

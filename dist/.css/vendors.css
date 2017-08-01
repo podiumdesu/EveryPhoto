@@ -25,6 +25,9 @@ body {
   height: 2000px;
   background-color: #2e3845;
 }
+.choose {
+  background-color: #f00;
+}
 nav {
   background-color: #2e3845;
   line-height: 53px;
