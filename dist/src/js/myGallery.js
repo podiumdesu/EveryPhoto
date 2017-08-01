@@ -23,8 +23,9 @@ require('../styles/common/common.css');
 require('../styles/common/nav-container.css');
 require('../styles/MG/inputInfo.css');
 var searchPath = exports.searchPath = void 0;
+exports.searchPath = searchPath = "";
 
-exports.searchPath = searchPath = "/Users/petnakanojo/Documents/img"; //这是一个假数据
+//searchPath = "/Users/petnakanojo/Documents/img";    //这是一个假数据
 
 
 var targetNode = $("#gallery-container");
@@ -70,7 +71,7 @@ searchBar.bind("keyup",function(event) {    //监听回车事件
 */
 
 //使用localstorage
-
+$("");
 
 $("#btn-addNewInfo").click(function () {
     var newLIB = {};

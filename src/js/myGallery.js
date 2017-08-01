@@ -7,8 +7,9 @@ import {libData} from './MG/libData';
 import renderLIB from './MG/renderLIB';
 import clear from './clear';
 export let searchPath;
+searchPath = "";
 
-searchPath = "/Users/petnakanojo/Documents/img";    //这是一个假数据
+//searchPath = "/Users/petnakanojo/Documents/img";    //这是一个假数据
 
 
 const targetNode = $("#gallery-container");
@@ -61,7 +62,7 @@ searchBar.bind("keyup",function(event) {    //监听回车事件
 */
 
 //使用localstorage
-
+$("")
 
 $("#btn-addNewInfo").click(function() {
    let newLIB = {};

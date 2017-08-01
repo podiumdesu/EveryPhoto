@@ -2,8 +2,10 @@
 
 var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-webpackJsonp([0], [
+webpackJsonp([1], [,,
 /* 0 */
+/* 1 */
+/* 2 */
 /***/function (module, exports, __webpack_require__) {
 
   "use strict";
@@ -1408,36 +1410,53 @@ webpackJsonp([0], [
   };
 
   /***/
-},,,,,
-/* 1 */
-/* 2 */
+},
 /* 3 */
-/* 4 */
-/* 5 */
 /***/function (module, exports, __webpack_require__) {
 
   "use strict";
 
-  __webpack_require__(6);
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.allData = undefined;
+
+  var _myGallery = __webpack_require__(6);
+
+  __webpack_require__(4);
   console.log("ddd");
+  __webpack_require__(2);
   __webpack_require__(0);
   __webpack_require__(1);
-  __webpack_require__(2);
-  __webpack_require__(7);
-  var foo = __webpack_require__(8);
-  console.log(foo);
+  __webpack_require__(5);
+
+  var allData = exports.allData = void 0;
+
+  exports.allData = allData = [];
   console.log("This is index.js");
   /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
   particlesJS.load('particles-js', "../../../assets/particles.json", function () {
     console.log('callback - particles.js config loaded');
   });
 
-  var allData = [{
-    smallURL: "../static/img/banner.jpg",
-    largeURL: "../static/img/banner.jpg",
-    largePATH: "../static/img/banner.jpg"
-  }];
+  var sendData = {};
+  /*
+  const allData = [
+      {
+          smallURL: "../static/img/banner.jpg",
+          largeURL: "../static/img/banner.jpg",
+          largePATH: "../static/img/banner.jpg",
+      }
+  ];
+  */
 
+  var ajax = new XMLHttpRequest();
+
+  /*
+  ajax.open("POST","/search",true);
+  ajax.setRequestHeader("Content-type","application/json");
+  ajax.send(JSON.stringify(data));
+  */
   var searchBar = $("#search-input");
   var searchInfo = searchBar.val();
   //监听搜索的回车事件，并进一步执行程序。监听到有输入即跳转到搜索结果的页面
@@ -1450,8 +1469,21 @@ webpackJsonp([0], [
         window.location.href = '../../../displayResult.html'; //跳转页面
         localStorage["searchInfo"] = searchInfo;
 
-        //这里要对服务器提出请求
-        allData.forEach(render);
+        ajax.open("POST", "/search", true);
+        ajax.setRequestHeader("Content-type", "application/json");
+        ajax.onreadystatechange = function () {
+          console.log(this.readyState);
+          if (this.readyState === 4) {
+            //Todo
+            cosnole.log(this.responseText);
+            exports.allData = allData = JSON.parse(responseText);
+            allData.forEach(render);
+          }
+        };
+        sendData.keyword = searchInfo;
+        sendData.path = _myGallery.searchPath;
+        //这里要向服务器发送请求。
+        ajax.send(JSON.stringify(sendData));
       } else {}
     }
   }, false);
@@ -1460,7 +1492,7 @@ webpackJsonp([0], [
 
   /***/
 },
-/* 6 */
+/* 4 */
 /***/function (module, exports, __webpack_require__) {
 
   "use strict";
@@ -1473,17 +1505,10 @@ webpackJsonp([0], [
 
   /***/
 },
-/* 7 */
+/* 5 */
 /***/function (module, exports) {
 
   // removed by extract-text-webpack-plugin
 
-  /***/},
-/* 8 */
-/***/function (module, exports, __webpack_require__) {
-
-  module.exports = __webpack_require__.p + "a8e3230ccbd7b9b74ab449e208f803d1.json";
-
-  /***/
-}], [5]);
+  /***/}], [3]);
 //# sourceMappingURL=indexbundle.js.map

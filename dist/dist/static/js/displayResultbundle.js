@@ -2,8 +2,10 @@
 
 var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-webpackJsonp([2], [
+webpackJsonp([0, 1], [,,
 /* 0 */
+/* 1 */
+/* 2 */
 /***/function (module, exports, __webpack_require__) {
 
   "use strict";
@@ -1408,9 +1410,7 @@ webpackJsonp([2], [
   };
 
   /***/
-},,,
-/* 1 */
-/* 2 */
+},
 /* 3 */
 /***/function (module, exports, __webpack_require__) {
 
@@ -1419,16 +1419,101 @@ webpackJsonp([2], [
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
+  exports.allData = undefined;
 
-  exports.default = function (targetNode) {
-    while (targetNode.children().length > 0) {
-      targetNode.empty();
+  var _myGallery = __webpack_require__(6);
+
+  __webpack_require__(4);
+  console.log("ddd");
+  __webpack_require__(2);
+  __webpack_require__(0);
+  __webpack_require__(1);
+  __webpack_require__(5);
+
+  var allData = exports.allData = void 0;
+
+  exports.allData = allData = [];
+  console.log("This is index.js");
+  /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
+  particlesJS.load('particles-js', "../../../assets/particles.json", function () {
+    console.log('callback - particles.js config loaded');
+  });
+
+  var sendData = {};
+  /*
+  const allData = [
+      {
+          smallURL: "../static/img/banner.jpg",
+          largeURL: "../static/img/banner.jpg",
+          largePATH: "../static/img/banner.jpg",
+      }
+  ];
+  */
+
+  var ajax = new XMLHttpRequest();
+
+  /*
+  ajax.open("POST","/search",true);
+  ajax.setRequestHeader("Content-type","application/json");
+  ajax.send(JSON.stringify(data));
+  */
+  var searchBar = $("#search-input");
+  var searchInfo = searchBar.val();
+  //监听搜索的回车事件，并进一步执行程序。监听到有输入即跳转到搜索结果的页面
+  searchBar.bind("keyup", function (event) {
+    //监听回车事件
+    var searchInfo = searchBar.val();
+    event = event || window.event;
+    if (event.keyCode === 13) {
+      if (searchInfo.length !== 0) {
+        window.location.href = '../../../displayResult.html'; //跳转页面
+        localStorage["searchInfo"] = searchInfo;
+
+        ajax.open("POST", "/search", true);
+        ajax.setRequestHeader("Content-type", "application/json");
+        ajax.onreadystatechange = function () {
+          console.log(this.readyState);
+          if (this.readyState === 4) {
+            //Todo
+            cosnole.log(this.responseText);
+            exports.allData = allData = JSON.parse(responseText);
+            allData.forEach(render);
+          }
+        };
+        sendData.keyword = searchInfo;
+        sendData.path = _myGallery.searchPath;
+        //这里要向服务器发送请求。
+        ajax.send(JSON.stringify(sendData));
+      } else {}
     }
-  };
+  }, false);
+
+  ;
 
   /***/
 },
 /* 4 */
+/***/function (module, exports, __webpack_require__) {
+
+  "use strict";
+
+  /**
+   * Created by petnakanojo on 28/07/2017.
+   */
+
+  console.log("Hello,world");
+
+  /***/
+},
+/* 5 */
+/***/function (module, exports) {
+
+  // removed by extract-text-webpack-plugin
+
+  /***/},,,
+/* 6 */
+/* 7 */
+/* 8 */
 /***/function (module, exports, __webpack_require__) {
 
   "use strict";
@@ -1448,27 +1533,24 @@ webpackJsonp([2], [
   };
 
   /***/
-},,,,,,,,,
-/* 5 */
-/* 6 */
-/* 7 */
-/* 8 */
+},,,,
 /* 9 */
 /* 10 */
 /* 11 */
 /* 12 */
-/* 13 */
 /***/function (module, exports, __webpack_require__) {
 
   "use strict";
 
-  var _clear = __webpack_require__(3);
+  var _clear = __webpack_require__(7);
 
   var _clear2 = _interopRequireDefault(_clear);
 
-  var _render = __webpack_require__(4);
+  var _render = __webpack_require__(8);
 
   var _render2 = _interopRequireDefault(_render);
+
+  var _index = __webpack_require__(3);
 
   function _interopRequireDefault(obj) {
     return obj && obj.__esModule ? obj : { default: obj };
@@ -1478,48 +1560,59 @@ webpackJsonp([2], [
    * Created by petnakanojo on 29/07/2017.
    */
   console.log("This is displayResult.js");
-  __webpack_require__(1);
-  __webpack_require__(2);
-  __webpack_require__(14);
   __webpack_require__(0);
-  __webpack_require__(4);
+  __webpack_require__(1);
+  __webpack_require__(13);
+  __webpack_require__(2);
+  __webpack_require__(8);
 
   var targetNode = $("#render-picture");
-  var allData = [{
-    smallURL: "../static/img/banner.jpg",
-    largeURL: "../static/img/banner.jpg",
-    largePATH: "../static/img/banner.jpg"
-  }, {
-    smallURL: "../static/img/fulls/01.jpg",
-    largeURL: "../static/img/banner.jpg",
-    largePATH: "../static/img/banner.jpg"
-  }, {
-    smallURL: "../static/img/banner.jpg",
-    largeURL: "../static/img/banner.jpg",
-    largePATH: "../static/img/banner.jpg"
-  }, {
-    smallURL: "../static/img/banner.jpg",
-    largeURL: "../static/img/banner.jpg",
-    largePATH: "../static/img/banner.jpg"
-  }, {
-    smallURL: "../static/img/banner.jpg",
-    largeURL: "../static/img/banner.jpg",
-    largePATH: "../static/img/banner.jpg"
-  }, {
-    smallURL: "../static/img/banner.jpg",
-    largeURL: "../static/img/banner.jpg",
-    largePATH: "../static/img/banner.jpg"
-  }, {
-    smallURL: "../static/img/banner.jpg",
-    largeURL: "../static/img/banner.jpg",
-    largePATH: "../static/img/banner.jpg"
-  }, {
-    smallURL: "../static/img/banner.jpg",
-    largeURL: "../static/img/banner.jpg",
-    largePATH: "../static/img/banner.jpg"
-  }];
+  /*
+  const allData = [
+      {
+          smallURL: "../static/img/banner.jpg",
+          largeURL: "../static/img/banner.jpg",
+          largePATH: "../static/img/banner.jpg",
+      },
+      {
+          smallURL: "../static/img/favicon.ico",
+          largeURL: "../static/img/banner.jpg",
+          largePATH: "../static/img/banner.jpg",
+      },
+      {
+          smallURL: "../static/img/banner.jpg",
+          largeURL: "../static/img/banner.jpg",
+          largePATH: "../static/img/banner.jpg",
+      },
+      {
+          smallURL: "../static/img/banner.jpg",
+          largeURL: "../static/img/banner.jpg",
+          largePATH: "../static/img/banner.jpg",
+      },
+      {
+          smallURL: "../static/img/banner.jpg",
+          largeURL: "../static/img/banner.jpg",
+          largePATH: "../static/img/banner.jpg",
+      },
+      {
+          smallURL: "../static/img/banner.jpg",
+          largeURL: "../static/img/banner.jpg",
+          largePATH: "../static/img/banner.jpg",
+      },
+      {
+          smallURL: "../static/img/banner.jpg",
+          largeURL: "../static/img/banner.jpg",
+          largePATH: "../static/img/banner.jpg",
+      },
+      {
+          smallURL: "../static/img/banner.jpg",
+          largeURL: "../static/img/banner.jpg",
+          largePATH: "../static/img/banner.jpg",
+      },
+  ];
+  */
   (0, _clear2.default)(targetNode);
-  allData.forEach(_render2.default);
+  _index.allData.forEach(_render2.default);
 
   var DRsearchBar = $("#DR-search-input");
   DRsearchBar.val(localStorage["searchInfo"]);
@@ -1535,7 +1628,7 @@ webpackJsonp([2], [
         $("#DR-search-input").val(localStorage["searchInfo"]);
 
         (0, _clear2.default)(targetNode);
-        allData.forEach(_render2.default);
+        _index.allData.forEach(_render2.default);
         //这里要向服务器发请求
       } else {}
     }
@@ -1543,8 +1636,8 @@ webpackJsonp([2], [
 
   $(".pic-container").live("click", function () {
     var index = $(this).attr("data-id");
-    $("#large-pic").attr("src", allData[index].largeURL);
-    $("#pic-path").html(allData[index].largePATH);
+    $("#large-pic").attr("src", _index.allData[index].largeURL);
+    $("#pic-path").html(_index.allData[index].largePATH);
 
     $("#render-picture").addClass("blur-display-heavy");
     $("#display-large-container").fadeIn(100);
@@ -1580,10 +1673,10 @@ webpackJsonp([2], [
 
   /***/
 },
-/* 14 */
+/* 13 */
 /***/function (module, exports) {
 
   // removed by extract-text-webpack-plugin
 
-  /***/}], [13]);
+  /***/}], [12]);
 //# sourceMappingURL=displayResultbundle.js.map

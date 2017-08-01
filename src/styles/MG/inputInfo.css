@@ -29,6 +29,11 @@ body {
     text-align: center;
     font-size: 18px;
 }
+.choose-path {
+    position: absolute;
+    top:0;
+    left: 0;
+}
 
 #addNewBar {
     position: absolute;
