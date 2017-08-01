@@ -9,8 +9,10 @@ require ('./lib/particles.js');
 require("./DR/render");
 import clear from './clear';
 import render from './DR/render';
+import {allData} from './index';
 
 const targetNode = $("#render-picture");
+/*
 const allData = [
     {
         smallURL: "../static/img/banner.jpg",
@@ -53,6 +55,7 @@ const allData = [
         largePATH: "../static/img/banner.jpg",
     },
 ];
+*/
 clear(targetNode);
 allData.forEach(render);
 

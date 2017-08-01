@@ -6,7 +6,9 @@ require('../styles/MG/inputInfo.css');
 import {libData} from './MG/libData';
 import renderLIB from './MG/renderLIB';
 import clear from './clear';
+export let searchPath;
 
+searchPath = "/Users/petnakanojo/Documents/img";    //这是一个假数据
 
 
 const targetNode = $("#gallery-container");
