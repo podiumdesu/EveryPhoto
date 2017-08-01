@@ -22,4 +22,13 @@ body {
 .blur-display {
     filter: blur(10px);
 }
+.blur-display-heavy {
+    filter: blur(20px);
+}
+.particles {
+    background-size: 100% 100%;
+    height:2000px;
+    background-color: #2e3845;
+
+}
 

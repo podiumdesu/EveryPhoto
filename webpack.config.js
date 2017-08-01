@@ -18,10 +18,10 @@ module.exports = {
     },
     module: {
         loaders: [
-    　　　 　{
-　　　　  　    　test: /\.html$/,
-　　　　　      　loader: 'html-withimg-loader'
-　　　       },
+            {
+                test: /\.html$/,
+                loader: 'html-withimg-loader'
+            },
             {
                 test: /\.json$/,
                 loader: "file-loader",
@@ -30,11 +30,11 @@ module.exports = {
                 }
             },
             {
-              test: /\.styl|css?$/,
-              loader: ExtractTextPlugin.extract({
-                fallback: 'style-loader',
-                use: 'css-loader!stylus-loader'
-              })
+                test: /\.styl|css?$/,
+                loader: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: 'css-loader!stylus-loader'
+                })
             },
             {
                 test: /\.jsx?$/,
@@ -49,16 +49,16 @@ module.exports = {
                 loader: 'html-loader',
             },
             {
-              test: /\.(png|jpe?g|jpg|gif|svg)$/,
-              loader: 'url-loader',
-              options: {
-                limit: 10000,
-                name: 'static/img/[name].[ext]'
-              }
+                test: /\.(png|jpe?g|jpg|gif|svg)$/,
+                loader: 'url-loader',
+                options: {
+                    limit: 10000,
+                    name: 'static/img/[name].[ext]'
+                }
             },
         ]
     },
-    
+
     devServer: {
         hot: true,
         historyApiFallback: true,
