@@ -33,6 +33,11 @@ body {
     position: absolute;
     top:0;
     left: 0;
+    border: 1px solid white;
+}
+.choose-path p {
+    margin: 0;
+
 }
 
 #addNewBar {

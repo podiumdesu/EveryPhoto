@@ -62,7 +62,9 @@ searchBar.bind("keyup",function(event) {    //监听回车事件
 */
 
 //使用localstorage
-$("")
+$(".choose-path").live("click",function() {
+
+});
 
 $("#btn-addNewInfo").click(function() {
    let newLIB = {};

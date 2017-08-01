@@ -6,7 +6,7 @@ export default function(element,index) {
     div.className += 'ga-bar';
     div.innerHTML = `
         <div class="choose-path">
-            <input type="radio" class="choose-radio">
+            <p>YES</p>
         </div>
         <p class="lib-name">${element.name}</p>
         <p class="lib-path">${element.path}</p>
