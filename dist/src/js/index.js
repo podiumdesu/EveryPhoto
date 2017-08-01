@@ -14,12 +14,11 @@ require('../styles/common/common.css');
 require('../styles/common/nav-container.css');
 require('../styles/index/search-bar.css');
 require('./DR/render');
-var allData = exports.allData = void 0;
+var allData = exports.allData = [];
 
 console.log("This is index.js");
 console.log(_myGallery.searchPath);
 console.log(JSON.parse(localStorage.getItem("searchPath")));
-exports.allData = allData = [];
 console.log("This is index.js");
 /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
 particlesJS.load('particles-js', "../../../assets/particles.json", function () {
@@ -63,8 +62,9 @@ searchBar.bind("keyup", function (event) {
                 if (this.readyState === 4) {
                     //Todo
                     console.log(this.responseText);
-                    exports.allData = allData = JSON.parse(this.responseText);
-                    allData.forEach(render);
+
+                    exports.allData = allData = JSON.parse(this.responseText).concat();
+                    console.log("allData" + allData);
                 }
             };
             sendData.keyword = searchInfo;

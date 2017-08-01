@@ -5,12 +5,11 @@ require ('../styles/common/common.css');
 require ('../styles/common/nav-container.css');
 require ('../styles/index/search-bar.css');
 require ('./DR/render');
-export let allData;
+export let allData = [];
 import {searchPath} from './myGallery';
 console.log("This is index.js");
 console.log(searchPath);
 console.log(JSON.parse(localStorage.getItem("searchPath")));
-allData = [];
 console.log("This is index.js");
 /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
 particlesJS.load('particles-js', "../../../assets/particles.json", function() {
@@ -53,8 +52,9 @@ searchBar.bind("keyup",function(event) {    //监听回车事件
                 console.log(this.readyState);
                 if (this.readyState === 4) {   //Todo
                     console.log(this.responseText);
-                    allData = JSON.parse(this.responseText);
-                    allData.forEach(render);
+
+                    allData = JSON.parse(this.responseText).concat();
+                    console.log("allData"+allData);
                 }
             };
             sendData.keyword = searchInfo;

@@ -1500,7 +1500,7 @@ webpackJsonp([0, 1], [
           if (this.readyState === 4) {
             //Todo
             console.log(this.responseText);
-            exports.allData = allData = JSON.parse(responseText);
+            exports.allData = allData = JSON.parse(this.responseText);
             allData.forEach(render);
           }
         };
