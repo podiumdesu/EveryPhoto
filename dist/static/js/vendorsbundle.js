@@ -89,7 +89,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "40b4310a7ac072227773"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "0efb158564ea57b628a1"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -845,8 +845,9 @@ __webpack_require__(0);
 __webpack_require__(1);
 __webpack_require__(11);
 var searchPath = exports.searchPath = void 0;
+exports.searchPath = searchPath = "";
 
-exports.searchPath = searchPath = "/Users/petnakanojo/Documents/img"; //这是一个假数据
+//searchPath = "/Users/petnakanojo/Documents/img";    //这是一个假数据
 
 
 var targetNode = $("#gallery-container");
@@ -892,7 +893,7 @@ searchBar.bind("keyup",function(event) {    //监听回车事件
 */
 
 //使用localstorage
-
+$(".choose-path").live("click", function () {});
 
 $("#btn-addNewInfo").click(function () {
     var newLIB = {};
@@ -980,7 +981,7 @@ exports.default = function (element, index) {
     var div = document.createElement("div");
     div.setAttribute("data-id", index);
     div.className += 'ga-bar';
-    div.innerHTML = "\n        <p class=\"lib-name\">" + element.name + "</p>\n        <p class=\"lib-path\">" + element.path + "</p>\n    ";
+    div.innerHTML = "\n        <div class=\"choose-path\">\n            <p>YES</p>\n        </div>\n        <p class=\"lib-name\">" + element.name + "</p>\n        <p class=\"lib-path\">" + element.path + "</p>\n    ";
     targetNode.prepend(div);
 };
 

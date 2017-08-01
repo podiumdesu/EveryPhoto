@@ -1464,7 +1464,7 @@ searchBar.bind("keyup", function (event) {
             window.location.href = '../../../displayResult.html'; //跳转页面
             localStorage["searchInfo"] = searchInfo;
 
-            ajax.open("POST", "/search", true);
+            ajax.open("POST", "http://localhost:5000/search", true);
             ajax.setRequestHeader("Content-type", "application/json");
             ajax.onreadystatechange = function () {
                 console.log(this.readyState);
@@ -1482,8 +1482,6 @@ searchBar.bind("keyup", function (event) {
         } else {}
     }
 }, false);
-
-;
 
 /***/ }),
 /* 4 */
