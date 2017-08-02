@@ -12,7 +12,7 @@ export default function(element,index) {
         div.setAttribute("chooseornot","yes");
         div.innerHTML = `
         <div class="choose-path choose" >
-            <p>YES</p>
+            <p></p>
         </div>
         <p class="lib-name">${element.name}</p>
         <p class="lib-path">${element.path}</p>
@@ -20,7 +20,7 @@ export default function(element,index) {
     } else {
         div.innerHTML = `
         <div class="choose-path" >
-            <p>YES</p>
+            <p></p>
         </div>
         <p class="lib-name">${element.name}</p>
         <p class="lib-path">${element.path}</p>

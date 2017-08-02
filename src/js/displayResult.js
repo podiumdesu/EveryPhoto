@@ -70,6 +70,29 @@ DRsearchBar.bind("keyup",function(event) {   //监听回车事件
             localStorage["searchInfo"] = DRsearchInfo;
             $("#DR-search-input").val(localStorage["searchInfo"]);
 
+            ajax.open("POST","http://localhost:5000/search",true);
+            ajax.setRequestHeader("Content-type","application/json");
+            ajax.onreadystatechange = function() {
+                console.log(this.readyState);
+                if (this.readyState === 4) {   //Todo
+                    console.log(this.responseText);
+                    localStorage.setItem("ddd",JSON.stringify(this.responseText));
+                    allData = JSON.parse(localStorage.getItem("ddd"));
+
+                    /*allData = [
+                     {
+                     smallURL: "../static/img/banner.jpg",
+                     largeURL: "../static/img/banner.jpg",
+                     largePATH: "../static/img/banner.jpg",
+                     }
+                     ];*/
+                }
+            };
+            sendData.keyword = searchInfo;
+            sendData.path = searchPath;
+            //这里要向服务器发送请求。
+            ajax.send(JSON.stringify(sendData));
+
 
             clear(targetNode);
             allData.forEach(render);

@@ -53,7 +53,7 @@ searchBar.bind("keydown", function (event) {
             ajax.setRequestHeader("Content-type", "application/json");
             ajax.onreadystatechange = function () {
                 console.log(this.readyState);
-                if (this.readyState === 4 && this.status === 200) {
+                if (this.readyState === 4) {
                     //Todo
                     console.log(this.responseText);
                     localStorage.setItem("ddd", JSON.stringify(this.responseText));

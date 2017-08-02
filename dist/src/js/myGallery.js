@@ -120,18 +120,12 @@ $("#btn-addNewInfo").click(function () {
     newLIB.path = $("#pathValue").val();
 
     if (newLIB.path.length > 0) {
-        console.log("It works");
         (0, _clear2.default)(targetNode);
 
         storedLIBData = JSON.parse(localStorage.getItem("LIB"));
-        console.log("d");
         storedLIBData.push(newLIB);
-        console.log("dd");
         localStorage.setItem("LIB", JSON.stringify(storedLIBData));
-        console.log("ddd");
         storedLIBData = JSON.parse(localStorage.getItem("LIB"));
-        console.log("dddd");
-        console.log(storedLIBData);
 
         storedLIBData.forEach(_renderLIB2.default);
         targetNode.append(divContainer);
