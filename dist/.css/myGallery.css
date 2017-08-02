@@ -26,6 +26,15 @@ body {
   text-align: center;
   font-size: 18px;
 }
+.choose-path {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 1px solid #fff;
+}
+.choose-path p {
+  margin: 0;
+}
 #addNewBar {
   position: absolute;
   width: 70px;

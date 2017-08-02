@@ -5,7 +5,6 @@ require ('../styles/common/common.css');
 require ('../styles/common/nav-container.css');
 require ('../styles/index/search-bar.css');
 require ('./DR/render');
-export let allData = [];
 import {searchPath} from './myGallery';
 console.log("This is index.js");
 console.log(searchPath);
@@ -15,7 +14,6 @@ console.log("This is index.js");
 particlesJS.load('particles-js', "../../../assets/particles.json", function() {
     console.log('callback - particles.js config loaded');
 });
-
 
 let sendData = {};
 /*
@@ -38,23 +36,29 @@ ajax.send(JSON.stringify(data));
 const searchBar = $("#search-input");
 let searchInfo = searchBar.val();
 //监听搜索的回车事件，并进一步执行程序。监听到有输入即跳转到搜索结果的页面
-searchBar.bind("keyup",function(event) {    //监听回车事件
+
+searchBar.bind("keydown",function(event) {    //监听回车事件
     let searchInfo = searchBar.val();
     event = event || window.event;
     if (event.keyCode === 13) {
         if (searchInfo.length !== 0) {
             window.location.href = '../../../displayResult.html';   //跳转页面
             localStorage["searchInfo"] = searchInfo;
-
             ajax.open("POST","http://localhost:5000/search",true);
             ajax.setRequestHeader("Content-type","application/json");
             ajax.onreadystatechange= function() {
                 console.log(this.readyState);
-                if (this.readyState === 4) {   //Todo
+                if (this.readyState === 4 && this.status === 200) {   //Todo
                     console.log(this.responseText);
+                    localStorage.setItem("ddd",JSON.stringify(this.responseText));
 
-                    allData = JSON.parse(this.responseText).concat();
-                    console.log("allData"+allData);
+                    /*allData = [
+                        {
+                            smallURL: "../static/img/banner.jpg",
+                            largeURL: "../static/img/banner.jpg",
+                            largePATH: "../static/img/banner.jpg",
+                        }
+                    ];*/
                 }
             };
             sendData.keyword = searchInfo;

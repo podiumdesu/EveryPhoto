@@ -8,8 +8,6 @@ var _render = require("./DR/render");
 
 var _render2 = _interopRequireDefault(_render);
 
-var _index = require("./index");
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
@@ -22,7 +20,7 @@ require("../styles/DR/displayResult.css");
 require('./lib/particles.js');
 require("./DR/render");
 
-
+var allData = JSON.parse(localStorage.getItem("ddd"));
 var targetNode = $("#render-picture");
 /*
 const allData = [
@@ -69,7 +67,7 @@ const allData = [
 ];
 */
 (0, _clear2.default)(targetNode);
-_index.allData.forEach(_render2.default);
+allData.forEach(_render2.default);
 
 var DRsearchBar = $("#DR-search-input");
 DRsearchBar.val(localStorage["searchInfo"]);
@@ -85,7 +83,7 @@ DRsearchBar.bind("keyup", function (event) {
             $("#DR-search-input").val(localStorage["searchInfo"]);
 
             (0, _clear2.default)(targetNode);
-            _index.allData.forEach(_render2.default);
+            allData.forEach(_render2.default);
             //这里要向服务器发请求
 
         } else {}
@@ -94,8 +92,8 @@ DRsearchBar.bind("keyup", function (event) {
 
 $(".pic-container").live("click", function () {
     var index = $(this).attr("data-id");
-    $("#large-pic").attr("src", _index.allData[index].largeURL);
-    $("#pic-path").html(_index.allData[index].largePATH);
+    $("#large-pic").attr("src", allData[index].largeURL);
+    $("#pic-path").html(allData[index].largePATH);
 
     $("#render-picture").addClass("blur-display-heavy");
     $("#display-large-container").fadeIn(100);
@@ -107,25 +105,4 @@ $("#close-display").click(function () {
 particlesJS.load('particles-js', "../../../assets/particles.json", function () {
     console.log('callback - particles.js config loaded');
 });
-
-/*
-
-[{
-    smallURL: "  ",
-    largeURL: " ",
-    largePath: " ",
-},{
-    smallURL: "  ",
-    largeURL: " ",
-    largePath: " ",
-},{
-    smallURL: "  ",
-    largeURL: " ",
-    largePath: " ",
-},{
-    smallURL: "  ",
-    largeURL: " ",
-    largePath: " ",
-}]
-    */
 //# sourceMappingURL=displayResult.js.map

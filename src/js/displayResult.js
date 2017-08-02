@@ -9,8 +9,7 @@ require ('./lib/particles.js');
 require("./DR/render");
 import clear from './clear';
 import render from './DR/render';
-import {allData} from './index';
-
+let allData = JSON.parse(localStorage.getItem("ddd"));
 const targetNode = $("#render-picture");
 /*
 const allData = [
@@ -63,7 +62,7 @@ const DRsearchBar = $("#DR-search-input");
 DRsearchBar.val(localStorage["searchInfo"]);
 
 //监听搜索的回车事件，并进一步执行程序。监听到有输入即跳转到搜索结果的页面
-DRsearchBar.bind("keyup",function(event) {    //监听回车事件
+DRsearchBar.bind("keyup",function(event) {   //监听回车事件
     event = event || window.event;
     if (event.keyCode === 13) {
         let DRsearchInfo = DRsearchBar.val();
@@ -93,29 +92,8 @@ $(".pic-container").live("click", function() {
 $("#close-display").click(function() {
     $("#display-large-container").fadeOut(100);
     $("#render-picture").removeClass("blur-display-heavy");
-})
+});
 particlesJS.load('particles-js', "../../../assets/particles.json", function() {
     console.log('callback - particles.js config loaded');
 });
 
-
-/*
-
-[{
-    smallURL: "  ",
-    largeURL: " ",
-    largePath: " ",
-},{
-    smallURL: "  ",
-    largeURL: " ",
-    largePath: " ",
-},{
-    smallURL: "  ",
-    largeURL: " ",
-    largePath: " ",
-},{
-    smallURL: "  ",
-    largeURL: " ",
-    largePath: " ",
-}]
-    */
