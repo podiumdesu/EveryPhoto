@@ -73,7 +73,7 @@ module.exports = {
             minChunks: 3
         }),
         new webpack.HotModuleReplacementPlugin(),
-        new ExtractTextPlugin('.css/[name].css'),
+        new ExtractTextPlugin('css/[name].css'),
         new HtmlWebpackPlugin({
             favicon: './src/imgs/favicon.ico',
             filename: './index.html',

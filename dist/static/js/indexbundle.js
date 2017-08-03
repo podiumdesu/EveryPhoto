@@ -148,18 +148,12 @@ $("#btn-addNewInfo").click(function () {
     newLIB.path = $("#pathValue").val();
 
     if (newLIB.path.length > 0) {
-        console.log("It works");
         (0, _clear2.default)(targetNode);
 
         storedLIBData = JSON.parse(localStorage.getItem("LIB"));
-        console.log("d");
         storedLIBData.push(newLIB);
-        console.log("dd");
         localStorage.setItem("LIB", JSON.stringify(storedLIBData));
-        console.log("ddd");
         storedLIBData = JSON.parse(localStorage.getItem("LIB"));
-        console.log("dddd");
-        console.log(storedLIBData);
 
         storedLIBData.forEach(_renderLIB2.default);
         targetNode.append(divContainer);
@@ -216,9 +210,9 @@ exports.default = function (element, index) {
     if (searchPathArray.indexOf(parseInt(index)) >= 0) {
         console.log("YESSSSSSS!!");
         div.setAttribute("chooseornot", "yes");
-        div.innerHTML = "\n        <div class=\"choose-path choose\" >\n            <p>YES</p>\n        </div>\n        <p class=\"lib-name\">" + element.name + "</p>\n        <p class=\"lib-path\">" + element.path + "</p>\n    ";
+        div.innerHTML = "\n        <div class=\"choose-path choose\" >\n            <p></p>\n        </div>\n        <p class=\"lib-name\">" + element.name + "</p>\n        <p class=\"lib-path\">" + element.path + "</p>\n    ";
     } else {
-        div.innerHTML = "\n        <div class=\"choose-path\" >\n            <p>YES</p>\n        </div>\n        <p class=\"lib-name\">" + element.name + "</p>\n        <p class=\"lib-path\">" + element.path + "</p>\n    ";
+        div.innerHTML = "\n        <div class=\"choose-path\" >\n            <p></p>\n        </div>\n        <p class=\"lib-name\">" + element.name + "</p>\n        <p class=\"lib-path\">" + element.path + "</p>\n    ";
     }
     targetNode.prepend(div);
 };
@@ -1694,7 +1688,7 @@ searchBar.bind("keydown", function (event) {
             ajax.setRequestHeader("Content-type", "application/json");
             ajax.onreadystatechange = function () {
                 console.log(this.readyState);
-                if (this.readyState === 4 && this.status === 200) {
+                if (this.readyState === 4) {
                     //Todo
                     console.log(this.responseText);
                     localStorage.setItem("ddd", JSON.stringify(this.responseText));

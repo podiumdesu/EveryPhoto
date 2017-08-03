@@ -26,7 +26,7 @@ __webpack_require__(13);
 __webpack_require__(8);
 __webpack_require__(2);
 
-var allData = JSON.parse(localStorage.getItem("ddd"));
+var allData = JSON.parse(localStorage.getItem("ddd")).data;
 var targetNode = $("#render-picture");
 /*
 const allData = [
@@ -87,6 +87,30 @@ DRsearchBar.bind("keyup", function (event) {
         if (DRsearchInfo.length !== 0) {
             localStorage["searchInfo"] = DRsearchInfo;
             $("#DR-search-input").val(localStorage["searchInfo"]);
+
+            ajax.open("POST", "http://localhost:5000/search", true);
+            ajax.setRequestHeader("Content-type", "application/json");
+            ajax.onreadystatechange = function () {
+                console.log(this.readyState);
+                if (this.readyState === 4) {
+                    //Todo
+                    console.log(this.responseText);
+                    localStorage.setItem("ddd", JSON.stringify(this.responseText));
+                    allData = JSON.parse(localStorage.getItem("ddd")).data;
+
+                    /*allData = [
+                     {
+                     smallURL: "../static/img/banner.jpg",
+                     largeURL: "../static/img/banner.jpg",
+                     largePATH: "../static/img/banner.jpg",
+                     }
+                     ];*/
+                }
+            };
+            sendData.keyword = searchInfo;
+            sendData.path = searchPath;
+            //这里要向服务器发送请求。
+            ajax.send(JSON.stringify(sendData));
 
             (0, _clear2.default)(targetNode);
             allData.forEach(_render2.default);
