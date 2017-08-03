@@ -101,7 +101,7 @@ const allData = [
 allData.forEach(_render2.default);
 
 var ajax = new XMLHttpRequest();
-var sendData = [];
+var sendData = {};
 
 var DRsearchBar = $("#DR-search-input");
 DRsearchBar.val(localStorage["searchInfo"]);
@@ -116,7 +116,7 @@ DRsearchBar.bind("keyup", function (event) {
             localStorage["searchInfo"] = DRsearchInfo;
             $("#DR-search-input").val(localStorage["searchInfo"]);
 
-            ajax.open("POST", "http://localhost:5000/search", true);
+            ajax.open("POST", "/search", true);
             ajax.setRequestHeader("Content-type", "application/json");
             ajax.onreadystatechange = function () {
                 console.log(this.readyState);
@@ -125,6 +125,8 @@ DRsearchBar.bind("keyup", function (event) {
                     console.log(this.responseText);
                     localStorage.setItem("ddd", this.responseText);
                     allData = JSON.parse(localStorage.getItem("ddd")).data;
+                    (0, _clear2.default)(targetNode);
+                    allData.forEach(_render2.default);
 
                     /*allData = [
                      {

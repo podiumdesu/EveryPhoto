@@ -1495,7 +1495,7 @@ webpackJsonp([0], [
           if (this.readyState === 4) {
             //Todo
             console.log(this.responseText);
-            localStorage.setItem("ddd", JSON.this.responseText);
+            localStorage.setItem("ddd", this.responseText);
 
             /*allData = [
                 {
