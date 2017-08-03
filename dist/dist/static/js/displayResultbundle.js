@@ -2,20 +2,44 @@
 
 var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-webpackJsonp([2], {
+webpackJsonp([1], {
+
+  /***/0:
+  /***/function _(module, exports, __webpack_require__) {
+
+    "use strict";
+
+    Object.defineProperty(exports, "__esModule", {
+      value: true
+    });
+
+    exports.default = function (element, index) {
+      var targetNode = $("#render-picture");
+      var div = document.createElement("div");
+      div.className += " pic-container ";
+      div.setAttribute("data-id", index);
+      //language=HTML
+      div.innerHTML = "\n        <div class=\"img-containers\">\n            <div class=\"img-container\">\n                <img src= " + element.smallURL + " alt=\"\">\n            </div>\n        </div>\n        <p class=\"pic-path\">" + element.largePATH + "</p>\n    ";
+      targetNode.append(div);
+    };
+
+    /***/
+  },
 
   /***/12:
   /***/function _(module, exports, __webpack_require__) {
 
     "use strict";
 
-    var _clear = __webpack_require__(6);
+    var _clear = __webpack_require__(5);
 
     var _clear2 = _interopRequireDefault(_clear);
 
-    var _render = __webpack_require__(2);
+    var _render = __webpack_require__(0);
 
     var _render2 = _interopRequireDefault(_render);
+
+    var _myGallery = __webpack_require__(4);
 
     function _interopRequireDefault(obj) {
       return obj && obj.__esModule ? obj : { default: obj };
@@ -25,11 +49,11 @@ webpackJsonp([2], {
      * Created by petnakanojo on 29/07/2017.
      */
     console.log("This is displayResult.js");
-    __webpack_require__(0);
     __webpack_require__(1);
-    __webpack_require__(13);
-    __webpack_require__(8);
     __webpack_require__(2);
+    __webpack_require__(13);
+    __webpack_require__(3);
+    __webpack_require__(0);
 
     var allData = JSON.parse(localStorage.getItem("ddd")).data;
     var targetNode = $("#render-picture");
@@ -80,6 +104,9 @@ webpackJsonp([2], {
     (0, _clear2.default)(targetNode);
     allData.forEach(_render2.default);
 
+    var ajax = new XMLHttpRequest();
+    var sendData = [];
+
     var DRsearchBar = $("#DR-search-input");
     DRsearchBar.val(localStorage["searchInfo"]);
 
@@ -100,7 +127,7 @@ webpackJsonp([2], {
             if (this.readyState === 4) {
               //Todo
               console.log(this.responseText);
-              localStorage.setItem("ddd", JSON.stringify(this.responseText));
+              localStorage.setItem("ddd", this.responseText);
               allData = JSON.parse(localStorage.getItem("ddd")).data;
 
               /*allData = [
@@ -112,8 +139,8 @@ webpackJsonp([2], {
                ];*/
             }
           };
-          sendData.keyword = searchInfo;
-          sendData.path = searchPath;
+          sendData.keyword = DRsearchInfo;
+          sendData.path = _myGallery.searchPath;
           //这里要向服务器发送请求。
           ajax.send(JSON.stringify(sendData));
 
@@ -150,29 +177,7 @@ webpackJsonp([2], {
 
     /***/},
 
-  /***/2:
-  /***/function _(module, exports, __webpack_require__) {
-
-    "use strict";
-
-    Object.defineProperty(exports, "__esModule", {
-      value: true
-    });
-
-    exports.default = function (element, index) {
-      var targetNode = $("#render-picture");
-      var div = document.createElement("div");
-      div.className += " pic-container ";
-      div.setAttribute("data-id", index);
-      //language=HTML
-      div.innerHTML = "\n        <div class=\"img-containers\">\n            <div class=\"img-container\">\n                <img src= " + element.smallURL + " alt=\"\">\n            </div>\n        </div>\n        <p class=\"pic-path\">" + element.largePATH + "</p>\n    ";
-      targetNode.append(div);
-    };
-
-    /***/
-  },
-
-  /***/8:
+  /***/3:
   /***/function _(module, exports, __webpack_require__) {
 
     "use strict";

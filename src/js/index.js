@@ -50,7 +50,7 @@ searchBar.bind("keydown",function(event) {    //监听回车事件
                 console.log(this.readyState);
                 if (this.readyState === 4) {   //Todo
                     console.log(this.responseText);
-                    localStorage.setItem("ddd",JSON.this.responseText);
+                    localStorage.setItem("ddd",this.responseText);
 
                     /*allData = [
                         {
