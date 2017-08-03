@@ -12,13 +12,16 @@ __EveryPhoto__ is an tool for labeling photos with certain words so that it can 
 * [qjy981010](https://github.com/qjy981010) _back-end_
 > github: https://github.com/qjy981010/everyphoto
 
-* [petnakanojo](https://github.com/podiumdesu) _font-end_
+* [petnakanojo](https://github.com/podiumdesu) _front-end_
 > github: https://github.com/podiumdesu/EveryPhoto
 
 * [tangxiangru](https://github.com/tangxiangru)  _training models_
 > github: https://github.com/tangxiangru/EveryPhoto_vocabulary
 
 * ukiko   _design_
+
+## Organization
+https://github.com/every-photo
 
 ## HOW TO USE
 If we refactor the code structure and fix all bugs, our project may be officially online!!
