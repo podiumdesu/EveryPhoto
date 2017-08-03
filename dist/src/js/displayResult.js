@@ -20,7 +20,7 @@ require("../styles/DR/displayResult.css");
 require('./lib/particles.js');
 require("./DR/render");
 
-var allData = JSON.parse(localStorage.getItem("ddd"));
+var allData = JSON.parse(localStorage.getItem("ddd")).data;
 var targetNode = $("#render-picture");
 /*
 const allData = [
@@ -90,7 +90,7 @@ DRsearchBar.bind("keyup", function (event) {
                     //Todo
                     console.log(this.responseText);
                     localStorage.setItem("ddd", JSON.stringify(this.responseText));
-                    allData = JSON.parse(localStorage.getItem("ddd"));
+                    allData = JSON.parse(localStorage.getItem("ddd")).data;
 
                     /*allData = [
                      {

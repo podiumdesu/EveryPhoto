@@ -9,7 +9,7 @@ require ('./lib/particles.js');
 require("./DR/render");
 import clear from './clear';
 import render from './DR/render';
-let allData = JSON.parse(localStorage.getItem("ddd"));
+let allData = JSON.parse(localStorage.getItem("ddd")).data;
 const targetNode = $("#render-picture");
 /*
 const allData = [
@@ -77,7 +77,7 @@ DRsearchBar.bind("keyup",function(event) {   //监听回车事件
                 if (this.readyState === 4) {   //Todo
                     console.log(this.responseText);
                     localStorage.setItem("ddd",JSON.stringify(this.responseText));
-                    allData = JSON.parse(localStorage.getItem("ddd"));
+                    allData = JSON.parse(localStorage.getItem("ddd")).data;
 
                     /*allData = [
                      {
