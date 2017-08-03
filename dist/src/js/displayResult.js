@@ -8,6 +8,8 @@ var _render = require("./DR/render");
 
 var _render2 = _interopRequireDefault(_render);
 
+var _myGallery = require("./myGallery");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
@@ -19,6 +21,7 @@ require("../styles/common/nav-container.css");
 require("../styles/DR/displayResult.css");
 require('./lib/particles.js');
 require("./DR/render");
+
 
 var allData = JSON.parse(localStorage.getItem("ddd")).data;
 var targetNode = $("#render-picture");
@@ -69,6 +72,9 @@ const allData = [
 (0, _clear2.default)(targetNode);
 allData.forEach(_render2.default);
 
+var ajax = new XMLHttpRequest();
+var sendData = [];
+
 var DRsearchBar = $("#DR-search-input");
 DRsearchBar.val(localStorage["searchInfo"]);
 
@@ -89,7 +95,7 @@ DRsearchBar.bind("keyup", function (event) {
                 if (this.readyState === 4) {
                     //Todo
                     console.log(this.responseText);
-                    localStorage.setItem("ddd", JSON.stringify(this.responseText));
+                    localStorage.setItem("ddd", this.responseText);
                     allData = JSON.parse(localStorage.getItem("ddd")).data;
 
                     /*allData = [
@@ -101,8 +107,8 @@ DRsearchBar.bind("keyup", function (event) {
                      ];*/
                 }
             };
-            sendData.keyword = searchInfo;
-            sendData.path = searchPath;
+            sendData.keyword = DRsearchInfo;
+            sendData.path = _myGallery.searchPath;
             //这里要向服务器发送请求。
             ajax.send(JSON.stringify(sendData));
 

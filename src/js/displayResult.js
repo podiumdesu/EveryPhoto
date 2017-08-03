@@ -9,6 +9,8 @@ require ('./lib/particles.js');
 require("./DR/render");
 import clear from './clear';
 import render from './DR/render';
+import {searchPath} from './myGallery';
+
 let allData = JSON.parse(localStorage.getItem("ddd")).data;
 const targetNode = $("#render-picture");
 /*
@@ -58,6 +60,9 @@ const allData = [
 clear(targetNode);
 allData.forEach(render);
 
+let ajax = new XMLHttpRequest();
+let sendData = [];
+
 const DRsearchBar = $("#DR-search-input");
 DRsearchBar.val(localStorage["searchInfo"]);
 
@@ -76,7 +81,7 @@ DRsearchBar.bind("keyup",function(event) {   //监听回车事件
                 console.log(this.readyState);
                 if (this.readyState === 4) {   //Todo
                     console.log(this.responseText);
-                    localStorage.setItem("ddd",JSON.stringify(this.responseText));
+                    localStorage.setItem("ddd", this.responseText);
                     allData = JSON.parse(localStorage.getItem("ddd")).data;
 
                     /*allData = [
@@ -88,7 +93,7 @@ DRsearchBar.bind("keyup",function(event) {   //监听回车事件
                      ];*/
                 }
             };
-            sendData.keyword = searchInfo;
+            sendData.keyword = DRsearchInfo;
             sendData.path = searchPath;
             //这里要向服务器发送请求。
             ajax.send(JSON.stringify(sendData));
